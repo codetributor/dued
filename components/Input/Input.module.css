@@ -20,17 +20,18 @@
 }
 
 .modal {
+  height: 100px;
+  width: 250px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .input {
-  margin-left: 5px;
-  margin-top: 5px;
-  padding: 5px 20px 5px 20px;
-  width: 200px;
+  width: 100%;
   border: none;
   border-bottom: 2px solid gray;
 }
@@ -40,7 +41,6 @@
 }
 
 .input__button {
-  margin-left: 5px;
   margin-top: 10px;
   border-color: var(--primary-btn-color);
   color: var(--primary-btn-color);
@@ -53,4 +53,18 @@
 .input__button:hover {
   background-color: var(--primary-btn-color);
   color: #fff;
+}
+
+.form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.x__container {
+  position: absolute;
+  top: 0;
+  right: 0;
 }

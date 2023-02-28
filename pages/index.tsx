@@ -4,14 +4,20 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Header from "@/components/Header/Header";
 import Input from "@/components/Input/Input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import ItemList from "@/components/ItemList/ItemList";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [itemList, setItemList] = useState<string[]>([]);
   const [toggled, setToggled] = useState(false);
+
   const toggle: any = () => {
     toggled ? setToggled(false) : setToggled(true);
+  };
+  const addItem: any = (item: string) => {
+    setItemList([...itemList, item]);
   };
   return (
     <>
@@ -26,7 +32,15 @@ export default function Home() {
           toggle();
         }}
       />
-      {toggled ? <Input /> : ""}
+      {toggled ? (
+        <Input
+          addItem={(item: string) => addItem(item)}
+          isToggle={() => toggle()}
+        />
+      ) : (
+        ""
+      )}
+      <ItemList itemList={itemList} />
     </>
   );
 }

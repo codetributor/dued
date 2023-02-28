@@ -1,0 +1,31 @@
+.itemList__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 350px;
+  margin: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.itemText {
+  width: 220px;
+  overflow-wrap: break-word;
+}
+
+.symbols__container {
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.symbol {
+  margin: 2px;
+}
