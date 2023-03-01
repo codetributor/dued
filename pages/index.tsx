@@ -7,11 +7,11 @@ import Input from "@/components/Input/Input";
 import { useEffect, useState } from "react";
 import ItemList from "@/components/ItemList/ItemList";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Home() {
   const [itemList, setItemList] = useState<string[]>([]);
   const [toggled, setToggled] = useState(false);
+
+  useEffect(() => {}, [itemList]);
 
   const toggle: any = () => {
     toggled ? setToggled(false) : setToggled(true);
@@ -19,6 +19,18 @@ export default function Home() {
   const addItem: any = (item: string) => {
     setItemList([...itemList, item]);
   };
+
+  const deleteItem: any = (item: string) => {
+    let loopList = itemList;
+    for (let i = 0; i < loopList.length; i++) {
+      if (loopList[i] == item) {
+        loopList[i] = loopList[loopList.length - 1];
+        loopList.pop();
+        setItemList([...loopList]);
+      }
+    }
+  };
+
   return (
     <>
       <Head>
@@ -40,7 +52,12 @@ export default function Home() {
       ) : (
         ""
       )}
-      <ItemList itemList={itemList} />
+      <ItemList
+        itemList={itemList}
+        deleteItem={(item: string) => {
+          deleteItem(item);
+        }}
+      />
     </>
   );
 }
