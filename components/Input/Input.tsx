@@ -1,12 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Input.module.css";
 import { HiOutlineX } from "react-icons/Hi";
 
-function Input({ addItem, isToggle }: any) {
+function Input({
+  addItem,
+  isToggle,
+  editItem,
+  resetEditItem,
+  editItemList,
+}: any) {
   const [item, setItem] = useState("");
 
+  useEffect(() => {
+    if (editItem != "") {
+      setItem(editItem);
+    }
+  }, [editItem]);
   const close = () => {
     isToggle();
+  };
+
+  const submit = (e: any) => {
+    e.preventDefault();
+    if (editItem == "") {
+      addItem(item);
+    } else {
+      editItemList(item, editItem);
+    }
+    isToggle();
+    resetEditItem();
   };
 
   return (
@@ -25,11 +47,7 @@ function Input({ addItem, isToggle }: any) {
             />
             <button
               type="submit"
-              onClick={(e) => {
-                e.preventDefault();
-                addItem(item);
-                isToggle();
-              }}
+              onClick={submit}
               className={styles.input__button}
             >
               add item

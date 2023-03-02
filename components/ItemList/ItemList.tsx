@@ -2,24 +2,39 @@ import { useEffect, useState } from "react";
 import { HiOutlineX, HiPencil, HiCheck } from "react-icons/Hi";
 import styles from "./ItemList.module.css";
 
-function ItemList({ itemList, deleteItem }: any) {
+function ItemList({ itemList, deleteItem, check, edit, toggle }: any) {
   return (
     <div className={styles.itemList__container}>
       <div>
-        {itemList.map((item: string) => {
+        {itemList.map((item: any) => {
+          console.log(item);
           return (
-            <div className={styles.item} key={item}>
-              <p className={styles.itemText}>{item}</p>
+            <div className={styles.item}>
+              <p className={styles.itemText}>{item.todo}</p>
               <div className={styles.symbols__container}>
                 <HiOutlineX
                   onClick={(e) => {
                     e.preventDefault();
-                    deleteItem(item);
+                    deleteItem(item.todo);
                   }}
                   className={styles.symbol}
                 />
-                <HiPencil className={styles.symbol} />
-                <HiCheck className={styles.symbol} />
+                <HiPencil
+                  onClick={(e) => {
+                    e.preventDefault();
+                    edit(item.todo);
+                    toggle();
+                  }}
+                  className={styles.symbol}
+                />
+                <HiCheck
+                  color={item.check}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    check(item.todo);
+                  }}
+                  className={styles.symbol}
+                />
               </div>
             </div>
           );

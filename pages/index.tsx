@@ -8,29 +8,67 @@ import { useEffect, useState } from "react";
 import ItemList from "@/components/ItemList/ItemList";
 
 export default function Home() {
-  const [itemList, setItemList] = useState<string[]>([]);
+  const [itemList, setItemList] = useState<any>([]);
   const [toggled, setToggled] = useState(false);
+  const [editItem, setEditItem] = useState("");
 
-  useEffect(() => {}, [itemList]);
+  useEffect(() => {}, [itemList, editItem]);
 
   const toggle: any = () => {
     toggled ? setToggled(false) : setToggled(true);
   };
   const addItem: any = (item: string) => {
-    setItemList([...itemList, item]);
+    setItemList([
+      ...itemList,
+      {
+        todo: item,
+        check: "",
+      },
+    ]);
   };
 
   const deleteItem: any = (item: string) => {
-    let loopList = itemList;
-    for (let i = 0; i < loopList.length; i++) {
-      if (loopList[i] == item) {
-        loopList[i] = loopList[loopList.length - 1];
-        loopList.pop();
-        setItemList([...loopList]);
+    let itemListArray = itemList;
+    for (let i = 0; i < item.length; i++) {
+      if (itemListArray[i]?.todo == item) {
+        itemListArray[i] = itemListArray[itemListArray.length - 1];
+        itemListArray.pop();
       }
     }
+    setItemList([...itemListArray]);
   };
 
+  const check = (item: string) => {
+    let itemListArray = itemList;
+    for (let i = 0; i < itemListArray.length; i++) {
+      if (itemListArray[i].todo == item) {
+        if (itemListArray[i].check == "") {
+          itemListArray[i].check = "blue";
+        } else {
+          itemListArray[i].check = "";
+        }
+      }
+    }
+    setItemList([...itemListArray]);
+  };
+
+  const edit = (item: string) => {
+    setEditItem(item);
+  };
+
+  const resetEditItem = () => {
+    setEditItem("");
+  };
+
+  const editItemList = (item: string, editItem: string) => {
+    let itemListArray = itemList;
+    for (let i = 0; i < itemListArray.length; i++) {
+      if (itemListArray[i].todo == editItem) {
+        itemListArray[i].todo = item;
+      }
+    }
+    setItemList(itemListArray);
+  };
   return (
     <>
       <Head>
@@ -48,6 +86,13 @@ export default function Home() {
         <Input
           addItem={(item: string) => addItem(item)}
           isToggle={() => toggle()}
+          editItem={editItem}
+          resetEditItem={() => {
+            resetEditItem();
+          }}
+          editItemList={(item: string, editItem: string) => {
+            editItemList(item, editItem);
+          }}
         />
       ) : (
         ""
@@ -56,6 +101,15 @@ export default function Home() {
         itemList={itemList}
         deleteItem={(item: string) => {
           deleteItem(item);
+        }}
+        check={(item: string) => {
+          check(item);
+        }}
+        edit={(item: string) => {
+          edit(item);
+        }}
+        toggle={() => {
+          toggle();
         }}
       />
     </>
