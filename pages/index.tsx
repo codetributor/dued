@@ -6,6 +6,7 @@ import Header from "@/components/Header/Header";
 import Input from "@/components/Input/Input";
 import { useEffect, useState } from "react";
 import ItemList from "@/components/ItemList/ItemList";
+import Quote from "@/components/Quote/Quote";
 
 export default function Home() {
   const [itemList, setItemList] = useState<any>([]);
@@ -23,6 +24,7 @@ export default function Home() {
       {
         todo: item,
         check: "",
+        strikeOut: "",
       },
     ]);
   };
@@ -43,9 +45,11 @@ export default function Home() {
     for (let i = 0; i < itemListArray.length; i++) {
       if (itemListArray[i].todo == item) {
         if (itemListArray[i].check == "") {
-          itemListArray[i].check = "blue";
+          itemListArray[i].check = "#26C485";
+          itemListArray[i].strikeOut = "line-through";
         } else {
           itemListArray[i].check = "";
+          itemListArray[i].strikeOut = "";
         }
       }
     }
@@ -97,6 +101,7 @@ export default function Home() {
       ) : (
         ""
       )}
+      <Quote />
       <ItemList
         itemList={itemList}
         deleteItem={(item: string) => {

@@ -9,8 +9,15 @@ function ItemList({ itemList, deleteItem, check, edit, toggle }: any) {
         {itemList.map((item: any) => {
           console.log(item);
           return (
-            <div className={styles.item}>
-              <p className={styles.itemText}>{item.todo}</p>
+            <div key={item.todo} className={styles.item}>
+              <p
+                style={{
+                  textDecoration: item.strikeOut,
+                }}
+                className={styles.itemText}
+              >
+                {item.todo}
+              </p>
               <div className={styles.symbols__container}>
                 <HiOutlineX
                   onClick={(e) => {

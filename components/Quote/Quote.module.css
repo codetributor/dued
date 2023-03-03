@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.border {
+  position: relative;
+  border: 1px solid gray;
+  padding: 30px;
+  width: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quote1 {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+}
+
+.quote2 {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+}
+
+.para {
+  overflow-wrap: break-word;
+}
+
+.author__container {
+  position: absolute;
+  bottom: -30px;
+  right: 20px;
+}
