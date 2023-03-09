@@ -41,7 +41,12 @@ function Input({
           <form className={styles.form}>
             <input
               value={item}
-              onChange={(e) => setItem(e.target.value)}
+              onChange={(e) =>
+                setItem(
+                  e.target.value.charAt(0).toUpperCase() +
+                    e.target.value.slice(1)
+                )
+              }
               className={styles.input}
               placeholder="to do item"
             />
