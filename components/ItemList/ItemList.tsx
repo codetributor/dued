@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { HiOutlineX } from "@react-icons/all-files/Hi/HiOutlineX";
-import { HiPencil } from "@react-icons/all-files/Hi/HiPencil";
-import { HiCheck } from "@react-icons/all-files/Hi/HiCheck";
+import { HiOutlineX } from "@react-icons/all-files/hi/HiOutlineX";
+import { HiPencil } from "@react-icons/all-files/hi/HiPencil";
+import { HiCheck } from "@react-icons/all-files/hi/HiCheck";
 import styles from "./ItemList.module.css";
 
 function ItemList({ itemList, deleteItem, check, edit, toggle }: any) {

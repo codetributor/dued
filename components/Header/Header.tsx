@@ -1,5 +1,5 @@
 import styles from "./Header.module.css";
-import { HiOutlinePlus } from "@react-icons/all-files/Hi/HiOutlinePlus";
+import { HiOutlinePlus } from "@react-icons/all-files/hi/HiOutlinePlus";
 
 function Header({ isToggle }: any) {
   return (
