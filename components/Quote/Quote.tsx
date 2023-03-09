@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import styles from "./Quote.module.css";
 
@@ -23,10 +24,10 @@ function Quote() {
     <div className={styles.container}>
       <div className={styles.border}>
         <div className={styles.quote1}>
-          <img src="/quote.png" height={50} width={50} />
+          <Image src="/quote.png" height={50} width={50} alt="quote symbol" />
         </div>
         <div className={styles.quote2}>
-          <img src="/quote.png" height={50} width={50} />
+          <Image src="/quote.png" height={50} width={50} alt="quote symbol" />
         </div>
         <p className={styles.para}>{randomQuote}</p>
         <div className={styles.author__container}>

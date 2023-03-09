@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./Input.module.css";
-import { HiOutlineX } from "react-icons/Hi";
+import { HiOutlineX } from "@react-icons/all-files/Hi/HiOutlineX";
 
 function Input({
   addItem,
